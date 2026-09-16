@@ -1,0 +1,15 @@
+user_id,transcation_type,amount,transaction_source,transaction_date
+1,income,15000,salary,01/06/2026
+1,expense,1120,uber,02/06/2026
+1,expense,2250,grocery_store,03/06/2026
+1,expense,3750,netflix,04/06/2026
+1,income,5000,freelance,05/06/2026
+1,expense,6000,restaurant,06/06/2026
+1,expense,3000,shopping,07/06/2026
+1,income,15000,salary,01/06/2026
+1,income,1120,uber,02/06/2026
+1,expense,3250,grocery_store,03/06/2026
+1,expense,875,netflix,04/06/2026
+1,income,5000,freelance,05/06/2026
+1,income,6980,restaurant,06/06/2026
+1,income,1300,shopping,07/06/2026

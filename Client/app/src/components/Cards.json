@@ -1,0 +1,16 @@
+ [
+{
+    "id":"1",
+    "name":"Income",
+    "value":"R58 204",
+    "icon":"money"
+    
+},
+{   "id":"2",
+    "name":"Expense",
+    "value":"R58 204",
+    "icon":"money"
+    
+}
+
+]
