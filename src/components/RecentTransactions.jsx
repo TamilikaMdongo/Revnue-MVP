@@ -2,14 +2,16 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 
 const RecentTransactions = () => {
+  
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const userId = localStorage.getItem("user_id");
 
   useEffect(()=>{
     const getTransaction = async () =>{
+      const API_URL = "https://revnue-mvp.onrender.com"
       try {
-        const response = await axios.get(`http://localhost:5000/transactions/${userId}`);
+        const response = await axios.get(`${API_URL}/transactions/${userId}`);
         setData(response.data)
       } catch(err) {
         console.log(err);

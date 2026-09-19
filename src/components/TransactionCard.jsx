@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 console.log("COMPONENT RENDERED");
 
-
+const API_URL = "https://revnue-mvp.onrender.com"
 
 
 const TransactionCard = () => {
@@ -23,7 +23,7 @@ console.log(userId)
     formData.append("file", file);
      formData.append("user_id", userId);
     try{
-      const res = await fetch('http://localhost:5000/transactions/upload', {
+      const res = await fetch(`${API_URL}/transactions/upload`, {
         method: "POST",
         body: formData
       });
@@ -47,11 +47,12 @@ console.log(userId)
   }
   const [data, setData] = useState([]);
  useEffect(() => {
+  const API_URL = "https://revnue-mvp.onrender.com"
   const fetchTransactions = async () => {
     try {
        const userId = localStorage.getItem("user_id");
        
-    const response = await axios.get(`http://localhost:5000/transactions/${userId}`); 
+    const response = await axios.get(`${API_URL}/transactions/${userId}`); 
 
       setData(response.data);
     } catch (err) {

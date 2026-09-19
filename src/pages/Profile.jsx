@@ -23,6 +23,7 @@ const Profile = () => {
   const [error, setError] = useState('')
 
   useEffect(() => {
+    const API_URL = "https://revnue-mvp.onrender.com"
     const getUserProfile = async () => {
       const userId = localStorage.getItem('user_id')
 
@@ -36,7 +37,7 @@ const Profile = () => {
         setError('')
 
         const response = await axios.get(
-          `http://localhost:5000/users/profile/${userId}`
+          `${API_URL}/users/profile/${userId}`
         )
 
         console.log('Profile returned by API:', response.data)
@@ -81,7 +82,7 @@ const Profile = () => {
     event.preventDefault()
 
     const userId = localStorage.getItem('user_id')
-
+const API_URL = "https://revnue-mvp.onrender.com"
     if (!userId) {
       setError('No logged-in user was found.')
       return
@@ -98,7 +99,7 @@ const Profile = () => {
       setError('')
 
       const response = await axios.patch(
-        `http://localhost:5000/users/profile/${userId}`,
+        `${API_URL}/users/profile/${userId}`,
         {
           first_name: profile.first_name,
           company_description: profile.company_description,

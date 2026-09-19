@@ -3,6 +3,7 @@ import iconMap from './IconMap';
 import axios from 'axios'
 
 const DashCard = ({data}) => {
+  const API_URL = "https://revnue-mvp.onrender.com"
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -10,7 +11,7 @@ const DashCard = ({data}) => {
     const userId = localStorage.getItem("user_id");
     const getTransactions = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/transactions/${userId}`);
+        const response = await axios.get(`${API_URL}/transactions/${userId}`);
         setTransactions(response.data);
       } catch (err) {
         console.log(err);

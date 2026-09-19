@@ -15,13 +15,13 @@ const Login = () => {
       [e.target.name]: e.target.value,
     });
   };
-
+const API_URL = "https://revnue-mvp.onrender.com"
   const navigate = useNavigate();
 
   const handleSubmit = async (e)  => {
      e.preventDefault();
     try{
-    const response = await axios.post('http://localhost:5000/users/login', form)
+    const response = await axios.post(`${API_URL}`, form)
    
     console.log(form);
 
