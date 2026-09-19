@@ -17,11 +17,14 @@ const Login = () => {
   };
 const API_URL = "https://revnue-mvp.onrender.com"
   const navigate = useNavigate();
+  console.log("API URL:", API_URL);
+
+
 
   const handleSubmit = async (e)  => {
      e.preventDefault();
     try{
-    const response = await axios.post(`${API_URL}`, form)
+    const response = await axios.post(`${API_URL}/users/login`, form);
    
     console.log(form);
 
@@ -32,6 +35,8 @@ navigate('/home')
     catch (err){
       console.log(err)
     }
+
+
   };
 
   return (
