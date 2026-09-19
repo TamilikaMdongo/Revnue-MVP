@@ -34,6 +34,7 @@ console.log(userId)
 
 
       const data = await res.json();
+      console.log("UPLOAD RESPONSE:", data);
     }
   
     catch (err){
