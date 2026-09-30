@@ -21,7 +21,7 @@ useEffect(() => {
   const getUser = async () => {
     try {
       const response = await axios.get(
-        `h${API_URL}/users/profile/${userId}`
+        `${API_URL}/users/profile/${userId}`
       );
 
       setUserData({
