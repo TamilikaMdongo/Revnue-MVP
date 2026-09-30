@@ -2,11 +2,9 @@ import mysql from "mysql2";
 
 const isProduction = !!process.env.DB_HOST;
 
-let connection;
-
-if (isProduction) {
-    // Render -> Aiven
-    connection = mysql.createConnection({
+const dbConfig = isProduction
+    ? {
+        // Render -> Aiven
         host: process.env.DB_HOST,
         user: process.env.DB_USER,
         password: process.env.DB_PASSWORD,
@@ -21,18 +19,24 @@ if (isProduction) {
                 ).toString("utf8")
             }
             : {}
-    });
-} else {
-    // Local MySQL
-    connection = mysql.createConnection({
+    }
+    : {
+        // Local MySQL
         host: "localhost",
         user: "root",
-        password: "Tamilikamdongo45",
+        password: process.env.LOCAL_DB_PASSWORD,
         database: "revnue"
-    });
-}
+    };
 
-connection.connect((err) => {
+const connection = mysql.createPool({
+    ...dbConfig,
+
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
+});
+
+connection.getConnection((err, conn) => {
     if (err) {
         console.error("Database connection failed:", err.message);
         return;
@@ -40,9 +44,11 @@ connection.connect((err) => {
 
     console.log(
         isProduction
-            ? "Connected to Aiven MySQL"
-            : "Connected to local MySQL"
+            ? "Connected to Aiven MySQL pool"
+            : "Connected to local MySQL pool"
     );
+
+    conn.release();
 });
 
 export default connection;
