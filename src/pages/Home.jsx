@@ -6,7 +6,7 @@ import Dashboard from '../components/Dashboard'
 import RecentTransactions from '../components/RecentTransactions'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-
+const API_URL = "https://revnue-mvp.onrender.com"
 
 const Home = () => {
   const user = {
@@ -21,7 +21,7 @@ useEffect(() => {
   const getUser = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/users/profile/${userId}`
+        `h${API_URL}/users/profile/${userId}`
       );
 
       setUserData({
