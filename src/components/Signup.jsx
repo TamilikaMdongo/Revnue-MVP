@@ -79,6 +79,7 @@ navigate('/login')
             value={form.password}
             onChange={handleChange}
             placeholder="Enter your password"
+            type="password"
           />
         </div>
 
